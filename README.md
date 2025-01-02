@@ -1,6 +1,7 @@
 # IamDiJay
 
 **DiJay Portfolio Website**
+Link: http://bit.ly/IamDiJay
 This repository contains the code for my personal portfolio website, showcasing my skills and interests in mechanical engineering, photography, and coding. The website features a minimalist design with a smooth transition between an introductory section and the main content.
 
 **Key Features:**
