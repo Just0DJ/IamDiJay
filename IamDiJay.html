@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DiJay's Portfolio Website">
+    <title>DiJay Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text for readability */
+            overflow: hidden; /* Prevent scrolling during intro animation */
+        }
+
+        /* Intro Section */
+        .intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-size: 2.5em;
+            background-color: #121212;
+            position: relative;
+            transition: opacity 2s ease-in-out; /* Smooth fade-out */
+        }
+
+        .intro span {
+            position: absolute;
+            opacity: 0;
+            animation: fadeInOut 3s linear forwards;
+        }
+
+        .intro span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .intro span:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .intro span:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        .intro span:nth-child(4) {
+            animation-delay: 9s;
+        }
+
+        .intro span:nth-child(5) {
+            animation-delay: 12s;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Main Content */
+        .main {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0; /* Start as invisible */
+            transition: opacity 2s ease-in-out; /* Smooth fade-in */
+        }
+
+        .main.active {
+            display: flex;
+            opacity: 1; /* Fade in when active */
+        }
+
+        /* Header and Menu */
+        .header {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+        }
+
+        .menu-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #2a2a2a;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .menu.active {
+            display: block;
+        }
+
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+        }
+
+        /* Projects Section */
+        .projects {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+        }
+
+        .project-card {
+            width: 60%;
+            max-width: 800px;
+            height: 300px;
+            background: #2a2a2a;
+            color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #555;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev-button {
+            left: -50px;
+        }
+
+        .next-button {
+            right: -50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intro Section -->
+    <div class="intro" id="intro">
+        <span>நான் டிஜே</span> <!-- Tamil -->
+        <span>मैं डिजे</span> <!-- Hindi -->
+        <span>أنا ديجي</span> <!-- Arabic -->
+        <span>Je suis DiJay</span> <!-- French -->
+        <span>I am DiJay</span> <!-- English -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="header">
+            <button class="menu-button" onclick="toggleMenu()">Menu</button>
+            <div class="menu" id="menu">
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <h1>I am DiJay</h1>
+        <p>Mechanical Engineer | Photographer | Aspiring Coder</p>
+
+        <!-- Projects Section -->
+        <div class="projects">
+            <button class="nav-button prev-button" onclick="prevProject()">&lt;</button>
+            <div class="project-card" id="project">
+                <h3>Project 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae metus nec neque venenatis dictum.</p>
+            </div>
+            <button class="nav-button next-button" onclick="nextProject()">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        // Intro animation logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.getElementById('intro');
+            setTimeout(() => {
+                intro.style.opacity = '0'; // Start fading out the intro section
+                setTimeout(() => {
+                    intro.style.display = 'none'; // Hide intro section after fade-out
+                    const mainContent = document.querySelector('.main');
+                    mainContent.classList.add('active'); // Show main content
+                    document.body.style.overflow = 'auto';
+                }, 2000); // Duration for intro fade-out
+            }, 15000); // Time before transition (15 seconds to cycle through languages)
+        });
+
+        // Menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+
+        // Project navigation logic
+        let currentProject = 1;
+        const totalProjects = 4; // Adjust this based on the number of projects
+
+        function showProject(index) {
+            const projectCard = document.getElementById('project');
+            projectCard.querySelector('h3').textContent = `Project ${index}`;
+            projectCard.querySelector('p').textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae metus nec neque venenatis dictum.";
+        }
+
+        function prevProject() {
+            currentProject = currentProject > 1 ? currentProject - 1 : totalProjects;
+            showProject(currentProject);
+        }
+
+        function nextProject() {
+            currentProject = currentProject < totalProjects ? currentProject + 1 : 1;
+            showProject(currentProject);
+        }
+    </script>
+</body>
+</html>
