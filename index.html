@@ -6,145 +6,17 @@
     <meta name="description" content="DiJay's Portfolio Website">
     <title>DiJay Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-    /* Main Content */
-    .main {
-        display: none;
-        height: 100vh;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        box-sizing: border-box;
-        opacity: 0; /* Start as invisible */
-        transition: opacity 2s ease-in-out; /* Smooth fade-in */
-    }
-
-    .main.active {
-        display: flex;
-        opacity: 1; /* Fade in when active */
-    }
-
-    /* Header and Menu */
-    .header {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        padding: 10px;
-    }
-
-    .menu-button {
-        background-color: #333;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .menu {
-        display: none;
-        position: absolute;
-        top: 40px;
-        right: 0;
-        background: #2a2a2a;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-    }
-
-    .menu.active {
-        display: block;
-    }
-
-    .menu a {
-        display: block;
-        text-decoration: none;
-        color: #fff;
-        padding: 5px;
-    }
-
-    /* Projects Section */
-    const projects = [
-{
-    title: "Science Cache System (MaRS Club)",
-    description: "Designed a modular system for efficient sample storage and retrieval. Created CAD models using Fusion 360 and OnShape; fabricated for IRC 2025."
-},
-{
-    title: "Mini Rover Chassis Design",
-    description: "Designed rover chassis and performed motion and structural simulations using SolidWorks. Gained end-to-end experience in rover design and validation."
-},
-{
-    title: "IRC 2025 – Cache Integration",
-    description: "Led design and integration of the science cache system for IRC 2025 competition. Collaborated on manufacturing using Fusion 360, SolidWorks, and rapid prototyping."
-},
-{
-    title: "EV Safety & Battery Systems Internship",
-    description: "Supported thermal analysis and battery protection system design. Worked on conveyor design and conducted load-based thermal testing with ANSYS and thermal cameras."
-}
-];
-
-function showProject(index) {
-const projectCard = document.getElementById('project');
-projectCard.querySelector('h3').textContent = projects[index - 1].title;
-projectCard.querySelector('p').textContent = projects[index - 1].description;
-}
-    .projects {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #1e1e1e;
-    }
-
-    .project-card {
-        width: 60%;
-        max-width: 800px;
-        height: 300px;
-        background: #2a2a2a;
-        color: #fff;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        position: relative;
-    }
-
-    .nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #555;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 50%;
-    }
-
-    .prev-button {
-        left: -50px;
-    }
-
-    .next-button {
-        right: -50px;
-    }
-    </style>
 </head>
 <body>
     <div class="animated-background"></div>
+
     <!-- Intro Section -->
     <div class="intro" id="intro">
-        <span>நான் டிஜே</span> <!-- Tamil -->
-        <span>मैं डिजे</span> <!-- Hindi -->
-        <span>أنا ديجي</span> <!-- Arabic -->
-        <span>Je suis DiJay</span> <!-- French -->
-        <span>I am DiJay</span> <!-- English -->
+        <span>நான் டிஜே</span>
+        <span>मैं डिजे</span>
+        <span>أنا ديجي</span>
+        <span>Je suis DiJay</span>
+        <span>I am DiJay</span>
     </div>
 
     <!-- Main Content -->
@@ -166,7 +38,7 @@ projectCard.querySelector('p').textContent = projects[index - 1].description;
             <button class="nav-button prev-button" onclick="prevProject()">&lt;</button>
             <div class="project-card" id="project">
                 <h3>Project 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae metus nec neque venenatis dictum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <button class="nav-button next-button" onclick="nextProject()">&gt;</button>
         </div>
@@ -177,14 +49,14 @@ projectCard.querySelector('p').textContent = projects[index - 1].description;
         document.addEventListener('DOMContentLoaded', () => {
             const intro = document.getElementById('intro');
             setTimeout(() => {
-                intro.style.opacity = '0'; // Start fading out the intro section
+                intro.style.opacity = '0';
                 setTimeout(() => {
-                    intro.style.display = 'none'; // Hide intro section after fade-out
+                    intro.style.display = 'none';
                     const mainContent = document.querySelector('.main');
-                    mainContent.classList.add('active'); // Show main content
+                    mainContent.classList.add('active');
                     document.body.style.overflow = 'auto';
-                }, 2000); // Duration for intro fade-out
-            }, 15000); // Time before transition (15 seconds to cycle through languages)
+                }, 2000);
+            }, 15000);
         });
 
         // Menu toggle
@@ -193,14 +65,34 @@ projectCard.querySelector('p').textContent = projects[index - 1].description;
             menu.classList.toggle('active');
         }
 
-        // Project navigation logic
+        // Project navigation
+        const projects = [
+            {
+                title: "Science Cache System (MaRS Club)",
+                description: "Designed a modular system for efficient sample storage and retrieval. Created CAD models using Fusion 360 and OnShape; fabricated for IRC 2025."
+            },
+            {
+                title: "Mini Rover Chassis Design",
+                description: "Designed rover chassis and performed motion and structural simulations using SolidWorks. Gained end-to-end experience in rover design and validation."
+            },
+            {
+                title: "IRC 2025 – Cache Integration",
+                description: "Led design and integration of the science cache system for IRC 2025 competition. Collaborated on manufacturing using Fusion 360, SolidWorks, and rapid prototyping."
+            },
+            {
+                title: "EV Safety & Battery Systems Internship",
+                description: "Supported thermal analysis and battery protection system design. Worked on conveyor design and conducted load-based thermal testing with ANSYS and thermal cameras."
+            }
+        ];
+
         let currentProject = 1;
-        const totalProjects = 4; // Adjust this based on the number of projects
+        const totalProjects = projects.length;
 
         function showProject(index) {
             const projectCard = document.getElementById('project');
-            projectCard.querySelector('h3').textContent = `Project ${index}`;
-            projectCard.querySelector('p').textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae metus nec neque venenatis dictum.";
+            const project = projects[index - 1];
+            projectCard.querySelector('h3').textContent = project.title;
+            projectCard.querySelector('p').textContent = project.description;
         }
 
         function prevProject() {
@@ -212,6 +104,9 @@ projectCard.querySelector('p').textContent = projects[index - 1].description;
             currentProject = currentProject < totalProjects ? currentProject + 1 : 1;
             showProject(currentProject);
         }
+
+        // Initialize first project
+        showProject(currentProject);
     </script>
 </body>
 </html>
