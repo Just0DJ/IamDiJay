@@ -120,6 +120,30 @@
         }
 
         /* Projects Section */
+        const projects = [
+    {
+        title: "Science Cache System (MaRS Club)",
+        description: "Designed a modular system for efficient sample storage and retrieval. Created CAD models using Fusion 360 and OnShape; fabricated for IRC 2025."
+    },
+    {
+        title: "Mini Rover Chassis Design",
+        description: "Designed rover chassis and performed motion and structural simulations using SolidWorks. Gained end-to-end experience in rover design and validation."
+    },
+    {
+        title: "IRC 2025 – Cache Integration",
+        description: "Led design and integration of the science cache system for IRC 2025 competition. Collaborated on manufacturing using Fusion 360, SolidWorks, and rapid prototyping."
+    },
+    {
+        title: "EV Safety & Battery Systems Internship",
+        description: "Supported thermal analysis and battery protection system design. Worked on conveyor design and conducted load-based thermal testing with ANSYS and thermal cameras."
+    }
+];
+
+function showProject(index) {
+    const projectCard = document.getElementById('project');
+    projectCard.querySelector('h3').textContent = projects[index - 1].title;
+    projectCard.querySelector('p').textContent = projects[index - 1].description;
+}
         .projects {
             display: flex;
             justify-content: center;
