@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="animated-background"></div>
 
     <!-- Intro Section -->
     <div class="intro" id="intro">
@@ -45,7 +44,7 @@
     </div>
 
     <script>
-        // Intro animation logic
+        // Intro animation
         document.addEventListener('DOMContentLoaded', () => {
             const intro = document.getElementById('intro');
             setTimeout(() => {
@@ -56,7 +55,7 @@
                     mainContent.classList.add('active');
                     document.body.style.overflow = 'auto';
                 }, 2000);
-            }, 15000);
+            }, 8000);
         });
 
         // Menu toggle
@@ -65,7 +64,7 @@
             menu.classList.toggle('active');
         }
 
-        // Project navigation
+        // Projects Data
         const projects = [
             {
                 title: "Science Cache System (MaRS Club)",
@@ -85,27 +84,25 @@
             }
         ];
 
-        let currentProject = 1;
-        const totalProjects = projects.length;
+        let currentProject = 0;
 
         function showProject(index) {
             const projectCard = document.getElementById('project');
-            const project = projects[index - 1];
-            projectCard.querySelector('h3').textContent = project.title;
-            projectCard.querySelector('p').textContent = project.description;
+            projectCard.querySelector('h3').textContent = projects[index].title;
+            projectCard.querySelector('p').textContent = projects[index].description;
         }
 
         function prevProject() {
-            currentProject = currentProject > 1 ? currentProject - 1 : totalProjects;
+            currentProject = (currentProject > 0) ? currentProject - 1 : projects.length - 1;
             showProject(currentProject);
         }
 
         function nextProject() {
-            currentProject = currentProject < totalProjects ? currentProject + 1 : 1;
+            currentProject = (currentProject < projects.length - 1) ? currentProject + 1 : 0;
             showProject(currentProject);
         }
 
-        // Initialize first project
+        // Load first project by default
         showProject(currentProject);
     </script>
 </body>
