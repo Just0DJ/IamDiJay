@@ -2,46 +2,46 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #121212; /* Black background */
+    color: #ffffff; /* White text */
     overflow: hidden;
-    background-color: #121212;
-    color: #ffffff;
 }
 
-/* Intro Section */
+/* Intro Section (Fixed) */
 .intro {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #121212;
+    background-color: #121212; /* Black background */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-size: 2rem;
     opacity: 1;
-    transition: opacity 2s ease;
+    transition: opacity 2s ease-in-out;
     z-index: 1000;
+    text-align: center;
 }
 
 .intro span {
     margin: 10px;
-    color: #008080;
+    color: #008080; /* Dark teal text */
 }
 
 /* Main Content */
 .main {
     display: none;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    text-align: center;
     height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 20px;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
 }
 
 .main.active {
@@ -99,16 +99,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #121212;
+    background-color: #121212; /* Black background */
 }
 
 .project-card {
     width: 60%;
     max-width: 800px;
     height: 300px;
-    background: #1e1e1e;
+    background: #1e1e1e; /* Darker grey for project card */
     color: #ffffff;
-    border: 2px solid #008080;
+    border: 2px solid #008080; /* Dark teal accent */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
