@@ -5,7 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DiJay's Portfolio Website">
     <title>DiJay Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Black background */
+            color: #ffffff; /* White text */
+            overflow: hidden;
+        }
+
+        /* Intro Section (Fixed) */
+        .intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #121212; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 2rem;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .intro span {
+            margin: 10px;
+            color: #008080; /* Dark teal text */
+        }
+
+        /* Main Content */
+        .main {
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            text-align: center;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .main.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Projects Section */
+        .projects {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212; /* Black background */
+        }
+
+        .project-card {
+            width: 60%;
+            max-width: 800px;
+            height: 300px;
+            background: #1e1e1e; /* Darker grey for project card */
+            color: #ffffff;
+            border: 2px solid #008080; /* Dark teal accent */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #008080;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev-button {
+            left: -50px;
+        }
+
+        .next-button {
+            right: -50px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -20,15 +119,6 @@
 
     <!-- Main Content -->
     <div class="main">
-        <div class="header">
-            <button class="menu-button" onclick="toggleMenu()">Menu</button>
-            <div class="menu" id="menu">
-                <a href="#projects">Projects</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-
         <h1>I am DiJay</h1>
         <p>Mechanical Engineer | Photographer | Aspiring Coder</p>
 
@@ -57,12 +147,6 @@
                 }, 2000);
             }, 8000);
         });
-
-        // Menu toggle
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
 
         // Projects Data
         const projects = [
@@ -105,5 +189,6 @@
         // Load first project by default
         showProject(currentProject);
     </script>
+
 </body>
 </html>
