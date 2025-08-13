@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiJay's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Consolas, monospace;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav-icons {
+            position: fixed;
+            top: 50%;
+            left: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 100;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease, 
+        }
+
+        .nav-icon:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 2rem;
+        }
+
+        .clock {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #333;
+            margin-right: 2rem;
+        }
+
+        .greeting {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        .occupation {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--text-primary);
+        }
+
+        /* Projects Section */
+        .projects {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .project-card {
+            width: 300px;
+            height: 400px;
+            background: #1a1a1a;
+            border-radius: 1rem;
+            padding: 2rem;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Intro Animation */
+        .intro {
+            position: fixed;
+            inset: 0;
+            background: var(--primary-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .intro span {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+        }
+
+        .intro span:nth-child(1) { animation: fadeInOut 2s ease-in-out 0s forwards; }
+        .intro span:nth-child(2) { animation: fadeInOut 2s ease-in-out 2s forwards; }
+        .intro span:nth-child(3) { animation: fadeInOut 2s ease-in-out 4s forwards; }
+        .intro span:nth-child(4) { animation: fadeInOut 2s ease-in-out 8s forwards; }
+        .intro span:nth-child(5) { animation: fadeInOut 2s ease-in-out 10s forwards; }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        #mainContent {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #mainContent.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div class="intro" id="intro">
+        <span>நான் டிஜே</span>
+        <span>انا ديجاي</span>
+        <span>Moi DiJay</span>
+        <span>I'm DiJay</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-icons">
+        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-envelope"></i>
+        <i class="nav-icon fas fa-briefcase"></i>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <div class="clock" id="clock"></div>
+            <h2 class="greeting">Welcome to my Portfolio</h2>
+            <p class="occupation">B.Tech Mech Student at IIIT</p>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="project-card">
+            <h3>Project 1</h3>
+        </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+        </div>
+        <div class="project-card">
+            <h3>Project 3</h3>
+        </div>
+    </section>
+
+    <script>
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = 
+                now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Intro Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.getElementById('intro');
+            setTimeout(() => {
+                intro.style.opacity = '0';
+                setTimeout(() => intro.style.display = 'none', 1000);
+            }, 15000);
+        });
+
+        // Scroll Animation for Projects
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'scale(1)';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
