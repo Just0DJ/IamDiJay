@@ -1,246 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DiJay's Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-bg: #0a0a0a;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DiJay's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-bg: #0a0a0a;
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --card-bg: #1a1a1a;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Consolas, monospace;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
+    body {
+      font-family: Consolas, monospace;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
 
-        /* Navigation */
-        .nav-icons {
-            position: fixed;
-            top: 50%;
-            left: 2rem;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            z-index: 100;
-        }
+    /* Navigation */
+    .nav-icons {
+      position: fixed;
+      top: 50%;
+      left: 2rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 100;
+    }
 
-        .nav-icon {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: color 0.3s ease, 
-        }
+    .nav-icon {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
 
-        .nav-icon:hover {
-            color: var(--text-primary);
-        }
+    .nav-icon:hover {
+      color: var(--text-primary);
+    }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            text-align: left;
-            padding: 2rem;
-        }
+    /* Sections global */
+    section {
+      min-height: 100vh;
+      padding: 2rem 4rem 2rem 6rem; /* shifted right to avoid overlap */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-        .clock {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-        }
+    /* Hero Section */
+    .hero {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: #333;
-            margin-right: 2rem;
-        }
+    .hero-left {
+      flex: 1;
+    }
 
-        .greeting {
-            font-size: 3rem;
-            margin: 1rem 0;
-        }
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .occupation {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
+    .hero-right img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #333;
+    }
 
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
+    .clock {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
 
-        .social-icon {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            transition: color 0.3s ease;
-        }
+    .greeting {
+      font-size: 3rem;
+      margin: 1rem 0;
+    }
 
-        .social-icon:hover {
-            color: var(--text-primary);
-        }
+    .occupation {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
 
-        /* Projects Section */
-        .projects {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 2rem;
-            padding: 2rem;
-        }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+    }
 
-        .project-card {
-            width: 300px;
-            height: 400px;
-            background: #1a1a1a;
-            border-radius: 1rem;
-            padding: 2rem;
-            flex-shrink: 0;
-            scroll-snap-align: center;
-            transition: transform 0.3s ease;
-        }
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
+    .social-icon:hover {
+      color: var(--text-primary);
+    }
 
-        /* Intro Animation */
-        .intro {
-            position: fixed;
-            inset: 0;
-            background: var(--primary-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+    /* About Section */
+    .about p {
+      max-width: 700px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
 
-        .intro span {
-            position: absolute;
-            font-size: 3rem;
-            opacity: 0;
-        }
+    /* Projects Section */
+    .projects-container {
+      overflow: hidden;
+      position: relative;
+    }
 
-        .intro span:nth-child(1) { animation: fadeInOut 2s ease-in-out 0s forwards; }
-        .intro span:nth-child(2) { animation: fadeInOut 2s ease-in-out 2s forwards; }
-        .intro span:nth-child(3) { animation: fadeInOut 2s ease-in-out 4s forwards; }
-        .intro span:nth-child(4) { animation: fadeInOut 2s ease-in-out 8s forwards; }
-        .intro span:nth-child(5) { animation: fadeInOut 2s ease-in-out 10s forwards; }
+    .projects-track {
+      display: flex;
+      gap: 2rem;
+      animation: scroll 30s linear infinite;
+    }
 
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(20px); }
-            20% { opacity: 1; transform: translateY(0); }
-            80% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-20px); }
-        }
+    .project-card {
+      width: 250px;
+      height: 350px;
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
 
-        #mainContent {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
 
-        #mainContent.visible {
-            opacity: 1;
-        }
-    </style>
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Contact Section */
+    .contact p {
+      max-width: 600px;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    /* Intro Animation */
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: var(--primary-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .intro span {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0;
+    }
+
+    .intro span:nth-child(1) { animation: fadeInOut 2s ease-in-out 0s forwards; }
+    .intro span:nth-child(2) { animation: fadeInOut 2s ease-in-out 2s forwards; }
+    .intro span:nth-child(3) { animation: fadeInOut 2s ease-in-out 4s forwards; }
+    .intro span:nth-child(4) { animation: fadeInOut 2s ease-in-out 8s forwards; }
+    .intro span:nth-child(5) { animation: fadeInOut 2s ease-in-out 10s forwards; }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      20% { opacity: 1; transform: translateY(0); }
+      80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Intro Animation -->
-    <div class="intro" id="intro">
-        <span>நான் டிஜே</span>
-        <span>انا ديجاي</span>
-        <span>Moi DiJay</span>
-        <span>I'm DiJay</span>
+  <!-- Intro Animation -->
+  <div class="intro" id="intro">
+    <span>நான் டிஜே</span>
+    <span>انا ديجاي</span>
+    <span>Moi DiJay</span>
+    <span>I'm DiJay</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-icons">
+    <i class="nav-icon fas fa-home"></i>
+    <i class="nav-icon fas fa-user"></i>
+    <i class="nav-icon fas fa-briefcase"></i>
+    <i class="nav-icon fas fa-envelope"></i>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="clock" id="clock"></div>
+      <h2 class="greeting">Welcome to my Portfolio</h2>
+      <p class="occupation">B.Tech Mechanical Student at IIIT</p>
+      <div class="social-links">
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+      </div>
     </div>
+    <div class="hero-right">
+      <img src="https://via.placeholder.com/300" alt="Profile Picture">
+    </div>
+  </section>
 
-    <!-- Navigation -->
-    <nav class="nav-icons">
-        <i class="nav-icon fas fa-home"></i>
-        <i class="nav-icon fas fa-envelope"></i>
-        <i class="nav-icon fas fa-briefcase"></i>
-    </nav>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at metus vitae ipsum volutpat posuere. Duis at
+      volutpat purus. Proin aliquet, mi vel viverra iaculis, sem lacus fermentum velit, nec fringilla purus magna eget
+      quam.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget orci vel odio facilisis vestibulum. Sed
+      volutpat nunc nec nisi congue, at volutpat nulla bibendum.</p>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div>
-            <div class="clock" id="clock"></div>
-            <h2 class="greeting">Welcome to my Portfolio</h2>
-            <p class="occupation">B.Tech Mech Student at IIIT</p>
-            <div class="social-links">
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="projects-track">
+        <div class="project-card"><h3>Project 1</h3></div>
+        <div class="project-card"><h3>Project 2</h3></div>
+        <div class="project-card"><h3>Project 3</h3></div>
+        <div class="project-card"><h3>Project 4</h3></div>
+        <div class="project-card"><h3>Project 5</h3></div>
+        <div class="project-card"><h3>Project 6</h3></div>
+        <div class="project-card"><h3>Project 7</h3></div>
+        <div class="project-card"><h3>Project 8</h3></div>
+        <div class="project-card"><h3>Project 9</h3></div>
+        <div class="project-card"><h3>Project 10</h3></div>
+      </div>
+    </div>
+  </section>
 
-    </section>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent suscipit lectus nec urna accumsan, a
+      consectetur nunc venenatis. Integer porta consequat lorem vel semper.</p>
+    <p>Email me at: <strong>dijay@example.com</strong></p>
+  </section>
 
-    <!-- Projects Section -->
-    <section class="projects">
-        <div class="project-card">
-            <h3>Project 1</h3>
-        </div>
-        <div class="project-card">
-            <h3>Project 2</h3>
-        </div>
-        <div class="project-card">
-            <h3>Project 3</h3>
-        </div>
-    </section>
+  <script>
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-    <script>
-        // Clock
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').textContent = 
-                now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // Intro Animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const intro = document.getElementById('intro');
-            setTimeout(() => {
-                intro.style.opacity = '0';
-                setTimeout(() => intro.style.display = 'none', 1000);
-            }, 15000);
-        });
-
-        // Scroll Animation for Projects
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'scale(1)';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
+    // Intro Animation remove
+    document.addEventListener('DOMContentLoaded', () => {
+      const intro = document.getElementById('intro');
+      setTimeout(() => {
+        intro.style.opacity = '0';
+        setTimeout(() => intro.style.display = 'none', 1000);
+      }, 12000);
+    });
+  </script>
 </body>
 </html>
