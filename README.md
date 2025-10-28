@@ -83,7 +83,7 @@
 
 ## 🧩 Widgets & Badges
 
-![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)
+![Netlify Status](https://api.netlify.com/api/v1/badges/3d952c6a-4bd3-4da7-ad3c-c122239d55b8/deploy-status)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/portfolio)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fdijay.netlify.app)
 ![License](https://img.shields.io/badge/license-MIT-green)
